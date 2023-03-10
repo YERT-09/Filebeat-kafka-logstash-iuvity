@@ -1,0 +1,16 @@
+filebeat.inputs:
+
+- type: log
+  enabled: true
+  paths:
+    - D:\Java\FILEBEAT\input\*.log
+
+output.kafka:
+  hosts: ["localhost:9092"]
+  topic: "input-json"
+  partition.round_robin:
+    reachable_only: false
+
+  required_acks: 1
+  compression: none
+  max_message_bytes: 1000000
